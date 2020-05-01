@@ -8,8 +8,9 @@
 </head>
 <body>
   <label for="map-selection">
-    <select name="map-selection" id="map-selection">
-      <option value="one" selected>Map One</option>
+    <select name="map-selection" id="map-selection" onchange="changeMap()">
+      <option value="-1">Choose Map</option>
+      <option value="one">Map One</option>
       <option value="two">Map Two</option>
       <option value="three">Map Three</option>
     </select>
@@ -36,13 +37,27 @@
   <br>
   <br>
   <hr>
-  <div class="map" id="map-one">
-    <div class="city" id="city-a">City A</div>
-    <div class="city" id="city-b">City B</div>
-    <div class="city" id="city-c">City C</div>
-    <div class="city" id="city-d">City D</div>
-    <div class="city" id="city-e">City E</div>
-    <canvas id="canvas" width=300 height=300></canvas>
+  <div id="maps">
+    <div class="map hidden" id="map-one">
+      <div class="city" id="city-a">City A</div>
+      <div class="city" id="city-b">City B</div>
+      <div class="city" id="city-c">City C</div>
+      <div class="city" id="city-d">City D</div>
+      <div class="city" id="city-e">City E</div>
+    </div>
+    <div class="map hidden" id="map-two">
+      <div class="city" id="city-a">City A</div>
+      <div class="city" id="city-b">City B</div>
+      <div class="city" id="city-c">City C</div>
+      <div class="city" id="city-d">City D</div>
+      <div class="city" id="city-e">City E</div>
+      <div class="city" id="city-f">City F</div>
+      <div class="city" id="city-g">City G</div>
+      <div class="city" id="city-h">City H</div>
+      <div class="city" id="city-i">City I</div>
+      <div class="city" id="city-j">City J</div>
+    </div>
+    <canvas id="canvas" width=600 height=600></canvas>
   </div>
   <script src="jquery.min.js"></script>
   <script src="index.js"></script>

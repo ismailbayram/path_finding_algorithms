@@ -4,15 +4,19 @@ body {
 
 .map {
   position: relative;
-  border: 1px solid #eee;
+  /* border: 1px solid #eee; */
   width: 300px;
   height: 300px;
   padding: 10px;
 }
 
-.map #canvas {
+.hidden {
+  display: none;
+}
+
+#canvas {
   position: absolute;
-  top: -50px;
+  top: 20px;
 }
 
 .map .city {
