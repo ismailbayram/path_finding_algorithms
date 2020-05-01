@@ -43,14 +43,14 @@ var mapCities = {
 var canvas=document.getElementById("canvas");
 var ctx=canvas.getContext("2d");
 
-function drawLabledLine(label, x, y, x1, y1, fontSize = 16) {
+function drawLabledLine(label, x, y, x1, y1, color = "#aaa", fontSize = 16) {
   ctx.lineWidth="1";
   ctx.strokeStyle="gray"; 
   const w = canvas.width;
   const h = canvas.height;
   ctx.font = fontSize + "px arial";
   ctx.lineWidth = 1;
-  ctx.fillStyle = ctx.strokeStyle = "#aaa";
+  ctx.fillStyle = ctx.strokeStyle = color;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle"; // Rather than mess around with this
                                // I use the same alignment and just change the
@@ -122,7 +122,15 @@ function placeCitiesAndDrawPaths(map) {
     }
   }
 
+  var $destination = $("#destination")[0];
+  
+  var html = "";
+  for (var i = 0; i < cities.length; i++) {
+      html += `<option value="city-${cities[i]}">City ${cities[i].toUpperCase()}</option>`
+  }
+  $destination.innerHTML = html;
 }
+changeMap();
 
 function changeMap() {
   var value = $("#map-selection")[0].value;
