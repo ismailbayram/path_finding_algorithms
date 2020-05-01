@@ -10,8 +10,9 @@ body {
   padding: 10px;
 }
 
-.map .canvas {
+.map #canvas {
   position: absolute;
+  top: -50px;
 }
 
 .map .city {

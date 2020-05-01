@@ -7,6 +7,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <label for="map-selection">
+    <select name="map-selection" id="map-selection">
+      <option value="one" selected>Map One</option>
+      <option value="two">Map Two</option>
+      <option value="three">Map Three</option>
+    </select>
+  </label>
+  <label for="destination-selection">
+    Destination
+    <select name="destination-selection" id="destination-selection">
+      <option value="city-b" selected>City B</option>
+      <option value="city-c">City C</option>
+      <option value="city-d">City D</option>
+      <option value="city-e">City E</option>
+    </select>
+  </label>
+  <label for="destination-selection">
+    Algorithm
+    <select name="destination-selection" id="destination-selection">
+      <option value="bfs" selected>Breadth First Search</option>
+      <option value="dfs">Depth First Search</option>
+      <option value="bestfs">Best First Search</option>
+      <option value="astar">A*</option>
+    </select>
+  </label>
+  <button>FIND THE PATH!</button>
+  <br>
+  <br>
+  <hr>
   <div class="map" id="map-one">
     <div class="city" id="city-a">City A</div>
     <div class="city" id="city-b">City B</div>
