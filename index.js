@@ -19,25 +19,47 @@ var mapMatrixes = {
     [null, null, null, null, 120, null, null, 56, 0, 200], // I to others
     [null, null, null, null, null, null, 150, null, 200, 0], // J to others
   ],
-  "three": []
+  "three": [
+    [0, 200, 79, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],  // A to others
+    [200, 0, null, null, 223, 312, null, null, null, null, null, null, null, null, null, null, null, null, null, null],   // B to others
+    [79, null, 0, 96, 189, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],   // C to others
+    [null, null, 96, 0, 150, null, 56, null, null, null, null, null, null, null, 72, null, null, null, null, null],   // D to others
+    [null, 223, 189, 150, 0, null, 77, null, 120, null, 45, null, null, null, null, null, null, null, null, null],   // E to others
+    [null, 312, null, null, null, 0, null, 120, null, null, null, 37, null, null, null, null, null, null, null, null], // F to others
+    [null, null, null, 56, 77, null, 0, null, null, 150, null, null, null, null, null, null, null, 74, null, null], // G to others
+    [null, null, null, null, null, 120, null, 0, 56, null, null, null, null, 52, null, null, null, null, null, null], // H to others
+    [null, null, null, null, 120, null, null, 56, 0, 200, null, null, null, null, null, null, null, null, null, null], // I to others
+    [null, null, null, null, null, null, 150, null, 200, 0, 57, null, null, null, null, null, null, null, 52, null], // J to others
+    [null, null, null, null, 45, null, null, null, null, 57, 0, null, null, null, null, null, null, null, null, null], // K to others
+    [null, null, null, null, null, 37, null, null, null, null, null, 0, 45, null, null, null, null, null, null, null], // L to others
+    [null, null, null, null, null, null, null, null, null, null, null, 45, 0, 67, null, null, null, null, null, null], // M to others
+    [null, null, null, null, null, null, null, 52, null, null, null, null, 67, 0, null, null, null, null, null, null], // N to others
+    [null, null, null, 72, null, null, null, null, null, null, null, null, null, null, 0, 122, null, null, null, null], // O to others
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 122, 0, 75, null, null, null], // P to others
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 0, 64, null, null], // R to others
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 64, 0, null, null], // S to others
+    [null, null, null, null, null, null, null, null, null, 52, null, null, null, null, null, null, null, null, 0, 22], // T to others
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 22, 0], // U to others
+  ]
 }
 
 var mapCitiesCoordinates = { // places of the cities
-  "one": [[0,0], [200, 0], [80, 80], [20, 200], [170, 223]],
-  "two": [[0,0], [200, 0], [80, 80], [20, 200], [170, 223], [512, 10], [100, 340], [450, 120], [440, 200], [380, 320]],
-  "three": []
+  "one": [[0,0], [200, 0], [80, 80], [20, 200], [195, 223]],
+  "two": [[0,0], [200, 0], [80, 80], [20, 200], [195, 223], [512, 10], [140, 310], [450, 120], [440, 200], [380, 320]],
+  "three": [[0,0], [200, 0], [80, 80], [20, 200], [195, 223], [512, 10], [140, 310], [450, 120], [440, 200], [380, 320],
+            [295, 250], [350, 50], [345,  110], [335, 185], [15, 295], [75, 348], [116, 400], [250, 440], [510, 375], [532, 450]],
 }
 
 var mapCitiesA_Distances = {
   "one": [180, 50, 180, 150],
   "two": [180, 50, 180, 150, 250, 217, 400, 510, 620],
-  "three": [],
+  "three": [180, 50, 180, 150, 250, 217, 400, 510, 620, 180, 220, 245, 287, 234, 301, 352, 401, 711, 733],
 }
 
 var mapCities = {
   "one": ["a", "b", "c", "d", "e"],
   "two": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"],
-  "three": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"],
+  "three": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u"],
 }
 
 var canvas=document.getElementById("canvas");
