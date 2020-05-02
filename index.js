@@ -117,6 +117,7 @@ function placeCitiesAndDrawPaths(map) {
   var coordinates = mapCitiesCoordinates[map];
   var matrix = mapMatrixes[map];
   var cities = mapCities[map];
+  var distances = mapCitiesA_Distances[map];
 
   for (var i = 0; i < $("#map-" + map).find(".city").length; i++) {
     $($("#map-" + map).find(".city")[i]).css("left", coordinates[i][0] + "px");
@@ -145,12 +146,16 @@ function placeCitiesAndDrawPaths(map) {
   }
 
   var $destination = $("#destination")[0];
+  var $table = $("#info table")[0];
   
   var html = "";
-  for (var i = 0; i < cities.length; i++) {
+  var html2 = "";
+  for (var i = 1; i < cities.length; i++) {
       html += `<option value="city-${cities[i]}">City ${cities[i].toUpperCase()}</option>`
+      html2 += `<tr><td>City ${cities[i].toUpperCase()}</td><td>${distances[i - 1]}</td></tr>`
   }
   $destination.innerHTML = html;
+  $table.innerHTML = html2;
 }
 changeMap();
 
