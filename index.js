@@ -50,11 +50,7 @@ var mapCitiesCoordinates = { // places of the cities, Coordinates
             [295, 250], [350, 50], [325,  110], [335, 165], [15, 295], [75, 348], [116, 400], [250, 440], [510, 375], [532, 450]],
 }
 
-var mapCitiesA_Distances = { // Bird-Flight Distance from A to Others
-  "one": [180, 50, 180, 150],
-  "two": [180, 50, 180, 150, 250, 217, 400, 510, 620],
-  "three": [180, 50, 180, 150, 250, 217, 400, 510, 620, 180, 220, 245, 287, 234, 301, 352, 401, 711, 733],
-}
+var mapBirdFlightDistances = {};
 
 var mapCities = {
   "one": ["a", "b", "c", "d", "e"],
@@ -114,12 +110,34 @@ function drawLabledLine(label, x, y, x1, y1, color = "#aaa", text = true, fontSi
   }
 }
 
+function calculateEuclidianDistance(x1, y1, x2, y2) {
+  return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+}
+
+function calculateBirdFlightDistances(map, destination) {
+  var cities = mapCities[map];
+  var $table = $("#info table")[0];
+  var html = "";
+
+  document.getElementById("destination-city").innerText = destination.toUpperCase();
+  mapBirdFlightDistances = {};
+
+  var distance, $city;
+  var $destinationCity = $("#map-" + map).find("#city-" + destination);
+  for (var i = 0; i < cities.length; i++) {
+    $city = $("#map-" + map).find("#city-" + cities[i])
+    distance = calculateEuclidianDistance($city.offset().left, $city.offset().top, $destinationCity.offset().left, $destinationCity.offset().top)
+    distance = Math.floor(distance);
+    html += `<tr><td>City ${cities[i].toUpperCase()}</td><td>${distance}</td></tr>`;
+    mapBirdFlightDistances[cities[i]] = distance;
+  }
+  $table.innerHTML = html;
+}
 
 function placeCitiesAndDrawPaths(map) {
   var coordinates = mapCitiesCoordinates[map];
   var matrix = mapMatrixes[map];
   var cities = mapCities[map];
-  var distances = mapCitiesA_Distances[map];
 
   for (var i = 0; i < $("#map-" + map).find(".city").length; i++) {
     $($("#map-" + map).find(".city")[i]).css("left", coordinates[i][0] + "px");
@@ -142,24 +160,18 @@ function placeCitiesAndDrawPaths(map) {
         drawLabledLine(matrix[i][j], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top);
         drawnPaths[i][j] = 1;
         drawnPaths[j][i] = 1;
-
       }
     }
   }
 
   var $destination = $("#destination")[0];
-  var $table = $("#info table")[0];
-  
   var html = "";
-  var html2 = "";
   for (var i = 1; i < cities.length; i++) {
       html += `<option value="${cities[i]}">City ${cities[i].toUpperCase()}</option>`
-      html2 += `<tr><td>City ${cities[i].toUpperCase()}</td><td>${distances[i - 1]}</td></tr>`
   }
   $destination.innerHTML = html;
-  $table.innerHTML = html2;
+  calculateBirdFlightDistances(map, $destination.value);
 }
-changeMap();
 
 function changeMap() {
   var value = $("#map-selection")[0].value;
@@ -174,6 +186,14 @@ function changeMap() {
   ctx.restore();
   placeCitiesAndDrawPaths(value);
 };
+
+changeMap();
+
+function changeDestination() {
+  var map = document.getElementById("map-selection").value;
+  var destination = document.getElementById("destination").value;
+  calculateBirdFlightDistances(map, destination);
+}
 
 document.getElementById("findPath").addEventListener("click", function(e) {
   e.preventDefault();

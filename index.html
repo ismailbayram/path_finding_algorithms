@@ -17,7 +17,7 @@
   </label>
   <label for="destination">
     Destination
-    <select name="destination" id="destination">
+    <select name="destination" id="destination" onchange="changeDestination()">
     </select>
   </label>
   <label for="destination">
@@ -79,7 +79,7 @@
     <canvas id="canvas" width=600 height=600></canvas>
   </div>
   <div id="info">
-    <p>Bird-Flight Distance to City A from the other ones.</p>
+    <p>Bird-Flight Distance to City <span id="destination-city"></span> from the other ones.</p>
     <table></table>
   </div>
   <script src="jquery.min.js"></script>
