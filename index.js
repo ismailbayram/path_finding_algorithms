@@ -108,7 +108,7 @@ function drawLabledLine(label, x, y, x1, y1, color = "#aaa", text = true, fontSi
      offset = -offset;
      distAlong = - distAlong;
   }
-  console.log(text)
+
   if (text) {
     ctx.fillText(label, distAlong, offset + 8);
   }
@@ -153,7 +153,7 @@ function placeCitiesAndDrawPaths(map) {
   var html = "";
   var html2 = "";
   for (var i = 1; i < cities.length; i++) {
-      html += `<option value="city-${cities[i]}">City ${cities[i].toUpperCase()}</option>`
+      html += `<option value="${cities[i]}">City ${cities[i].toUpperCase()}</option>`
       html2 += `<tr><td>City ${cities[i].toUpperCase()}</td><td>${distances[i - 1]}</td></tr>`
   }
   $destination.innerHTML = html;
@@ -174,3 +174,26 @@ function changeMap() {
   ctx.restore();
   placeCitiesAndDrawPaths(value);
 };
+
+document.getElementById("findPath").addEventListener("click", function(e) {
+  e.preventDefault();
+  var map = document.getElementById("map-selection").value;
+  var destination = document.getElementById("destination").value;
+  var algorithm = document.getElementById("algorithm").value;
+  var $result = document.getElementById("result");
+  $result.innerText = "";
+  var distance;
+  changeMap();
+  switch(algorithm) {
+    case "dfs":
+      distance = DepthFirstSearch("a", destination, map);
+      break;
+    case "bfs":
+      break;
+    case "bestfs":
+      break;
+    case "astar":
+      break;
+  }
+  $result.innerText = "Path Distance: " + distance;
+});

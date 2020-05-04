@@ -8,6 +8,7 @@
 </head>
 <body>
   <label for="map-selection">
+    Map
     <select name="map-selection" id="map-selection" onchange="changeMap()">
       <option value="one">Map One</option>
       <option value="two">Map Two</option>
@@ -28,7 +29,8 @@
       <option value="astar">A*</option>
     </select>
   </label>
-  <button>FIND THE PATH!</button>
+  <button id="findPath">FIND THE PATH!</button>
+  <span id="result"></span>
   <br>
   <br>
   <hr>

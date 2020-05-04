@@ -53,16 +53,21 @@ function DepthFirstSearch(start, finish, map) {
   var stack = new Stack();
   var visited = new Array(cities.length);
   visited[startIndex] = true;
-
+  
   stack.push(startIndex);
-  var found = DFSUtil(stack, visited, matrix, cities, startIndex, finishIndex)
+  var found = DFSUtil(stack, visited, matrix, cities, startIndex, finishIndex, distance);
+
+  var distance = 0;
   for (var i = 1; i < stack.list.length; i++) {
     var $city1 = $("#map-" + map).find("#city-"+cities[stack.list[i]]);
     var $city2 = $("#map-" + map).find("#city-"+cities[stack.list[i - 1]]);
     drawLabledLine(matrix[stack.list[i]][stack.list[i - 1]], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top, "green", false);
+    distance += matrix[stack.list[i]][stack.list[i - 1]];
   }
   
   var $city1 = $("#map-" + map).find("#city-"+cities[stack.list[i - 1]]);
   var $city2 = $("#map-" + map).find("#city-"+cities[finishIndex]);
   drawLabledLine(matrix[stack.list[i - 1]][finishIndex], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top, "green", false);
+  distance += matrix[stack.list[i - 1]][finishIndex];
+  return distance;
 }
