@@ -169,6 +169,7 @@ function placeCitiesAndDrawPaths(map) {
     html += `<option value="${cities[i]}">City ${cities[i].toUpperCase()}</option>`;
   }
   $destination.innerHTML = html;
+  calculateBirdFlightDistances(map, $destination.value);
 }
 
 function changeMap() {
@@ -186,9 +187,6 @@ function changeMap() {
 };
 
 changeMap();
-var map = $("#map-selection")[0].value;
-var $destination = $("#destination")[0].value;
-calculateBirdFlightDistances(map, $destination);
 
 function changeDestination() {
   var map = document.getElementById("map-selection").value;
@@ -218,5 +216,5 @@ document.getElementById("findPath").addEventListener("click", function(e) {
     case "astar":
       break;
   }
-  $result.innerText = "Path Distance: " + distance;
+  $result.innerText = "Destination: City " + destination.toUpperCase() + ". Path Distance: " + distance;
 });
