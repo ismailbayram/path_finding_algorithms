@@ -1,4 +1,3 @@
-
 var mapMatrixes = {
   "one": [
     [0, 200, 79, null, null],  // Distance from A to others
@@ -167,10 +166,9 @@ function placeCitiesAndDrawPaths(map) {
   var $destination = $("#destination")[0];
   var html = "";
   for (var i = 1; i < cities.length; i++) {
-      html += `<option value="${cities[i]}">City ${cities[i].toUpperCase()}</option>`
+    html += `<option value="${cities[i]}">City ${cities[i].toUpperCase()}</option>`;
   }
   $destination.innerHTML = html;
-  calculateBirdFlightDistances(map, $destination.value);
 }
 
 function changeMap() {
@@ -188,6 +186,9 @@ function changeMap() {
 };
 
 changeMap();
+var map = $("#map-selection")[0].value;
+var $destination = $("#destination")[0].value;
+calculateBirdFlightDistances(map, $destination);
 
 function changeDestination() {
   var map = document.getElementById("map-selection").value;

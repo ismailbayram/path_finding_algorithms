@@ -93,17 +93,17 @@ function BreadthFirstSearch(start, finish, map) {
   visited[startIndex] = true;
 
   var found = false;
-  var path, node, newPath;
+  var path, currentNode, newPath;
   queue.enqueue([startIndex]);
 
   while(!queue.isEmpty() && !found) {
     path = queue.dequeue();
-    node = path[path.length - 1];
-    if(node == finishIndex) {
+    currentNode = path[path.length - 1];
+    if(currentNode == finishIndex) {
       found = true;
     }
     for (var i = 0; i < cities.length; i++) {
-      if(!!matrix[node][i] && !visited[i]) {
+      if(!!matrix[currentNode][i] && !visited[i]) {
         visited[i] = true;
         newPath = [...path];
         newPath.push(i);
@@ -135,26 +135,39 @@ function BestFirstSearch(start, finish, map) {
   visited[startIndex] = true;
 
   var found = false;
-  var path = [], node;
+  var path = [], currentNode;
   stack.push(startIndex);
   path.push(startIndex);
 
   while(!stack.isEmpty() && !found) {
-    node = stack.pop();
-    if (node == finishIndex) {
+    currentNode = stack.pop();
+    if (currentNode == finishIndex) {
       found = true;
+      break;
     }
-    
+    for (var i = 0; i < matrix[currentNode].length; i++) {
+      if (matrix[currentNode][i] != null && !visited[i]) {
+        visited[i] = true;
+        stack.push(i);
+      }
+    }
+
+    stack.list = stack.list.sort(function(a, b) {
+      return mapBirdFlightDistances[cities[a]] - mapBirdFlightDistances[cities[b]];
+    });
+    path.push(stack.list[0]);
+    stack.flush();
+    stack.push(path[path.length - 1]);
   }
 
   var distance = 0;
   // draw the path
-  // for (var i = 0; i < path.length - 1; i++) {
-  //   var $city1 = $("#map-" + map).find("#city-"+ cities[path[i]]);
-  //   var $city2 = $("#map-" + map).find("#city-"+ cities[path[i + 1]]);
-  //   drawLabledLine(matrix[path[i]][path[i + 1]], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top, "green", false);
-  //   distance += matrix[path[i]][path[i + 1]];
-  // }
+  for (var i = 0; i < path.length - 1; i++) {
+    var $city1 = $("#map-" + map).find("#city-"+ cities[path[i]]);
+    var $city2 = $("#map-" + map).find("#city-"+ cities[path[i + 1]]);
+    drawLabledLine(matrix[path[i]][path[i + 1]], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top, "green", false);
+    distance += matrix[path[i]][path[i + 1]];
+  }
 
   return distance;
 }
