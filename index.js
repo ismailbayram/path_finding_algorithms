@@ -203,18 +203,13 @@ document.getElementById("findPath").addEventListener("click", function(e) {
   $result.innerText = "";
   var distance;
   changeMap();
-  switch(algorithm) {
-    case "dfs":
-      distance = DepthFirstSearch("a", destination, map);
-      break;
-    case "bfs":
-      distance = BreadthFirstSearch("a", destination, map);
-      break;
-    case "bestfs":
-      distance = BestFirstSearch("a", destination, map);
-      break;
-    case "astar":
-      break;
+
+  var algorithms = {
+    "dfs": DepthFirstSearch,
+    "bfs": BreadthFirstSearch,
+    "bestfs": BestFirstSearch,
+    "astar": AStar,
   }
+  distance = algorithms[algorithm]("a", destination, map);
   $result.innerText = "Destination: City " + destination.toUpperCase() + ". Path Distance: " + distance;
 });

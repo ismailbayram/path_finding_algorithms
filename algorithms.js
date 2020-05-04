@@ -171,3 +171,21 @@ function BestFirstSearch(start, finish, map) {
 
   return distance;
 }
+
+function AStar(start, finish, map){
+  var cities = mapCities[map];
+  var matrix = mapMatrixes[map];
+  var startIndex = cities.findIndex(function(el) { return el == start});
+  var finishIndex = cities.findIndex(function(el) { return el == finish});
+
+  var distance = 0;
+  // draw the path
+  // for (var i = 0; i < path.length - 1; i++) {
+  //   var $city1 = $("#map-" + map).find("#city-"+ cities[path[i]]);
+  //   var $city2 = $("#map-" + map).find("#city-"+ cities[path[i + 1]]);
+  //   drawLabledLine(matrix[path[i]][path[i + 1]], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top, "green", false);
+  //   distance += matrix[path[i]][path[i + 1]];
+  // }
+
+  return distance;
+}
