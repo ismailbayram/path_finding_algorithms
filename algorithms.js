@@ -183,14 +183,49 @@ function AStar(start, finish, map){
   var startIndex = cities.findIndex(function(el) { return el == start});
   var finishIndex = cities.findIndex(function(el) { return el == finish});
 
+  var stack = new Stack();
+  var visited = new Array(cities.length);
+  visited[startIndex] = true;
+
+  var found = false;
+  var path = [], currentNode;
+  stack.push(startIndex);
+  path.push(startIndex);
+
+  while(!stack.isEmpty() && !found) {
+    currentNode = stack.pop();
+    if (currentNode == finishIndex) {
+      found = true;
+      break;
+    }
+
+    for (var i = 0; i < matrix[currentNode].length; i++) {
+      if (matrix[currentNode][i] != null && !visited[i]) {
+        visited[i] = true;
+        stack.push(i);
+      }
+    }
+
+    if(stack.isEmpty())
+      break;
+
+    stack.list = stack.list.sort(function(a, b) {
+      return (mapBirdFlightDistances[cities[a]] + matrix[currentNode][a]) - (mapBirdFlightDistances[cities[b]] + matrix[currentNode][b]);
+    });
+    path.push(stack.list[0]);
+    stack.flush();
+    stack.push(path[path.length - 1]);
+  }
+
   var distance = 0;
   // draw the path
-  // for (var i = 0; i < path.length - 1; i++) {
-  //   var $city1 = $("#map-" + map).find("#city-"+ cities[path[i]]);
-  //   var $city2 = $("#map-" + map).find("#city-"+ cities[path[i + 1]]);
-  //   drawLabledLine(matrix[path[i]][path[i + 1]], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top, "green", false);
-  //   distance += matrix[path[i]][path[i + 1]];
-  // }
-
+  for (var i = 0; i < path.length - 1; i++) {
+    var $city1 = $("#map-" + map).find("#city-"+ cities[path[i]]);
+    var $city2 = $("#map-" + map).find("#city-"+ cities[path[i + 1]]);
+    drawLabledLine(matrix[path[i]][path[i + 1]], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top, "green", false);
+    distance += matrix[path[i]][path[i + 1]];
+  }
+  if(!found)
+    return -1;
   return distance;
 }
