@@ -192,6 +192,7 @@ document.getElementById("findPath").addEventListener("click", function(e) {
       distance = BreadthFirstSearch("a", destination, map);
       break;
     case "bestfs":
+      distance = BestFirstSearch("a", destination, map);
       break;
     case "astar":
       break;
