@@ -65,7 +65,7 @@ var mapCities = {
 var canvas=document.getElementById("canvas");
 var ctx=canvas.getContext("2d");
 
-function drawLabledLine(label, x, y, x1, y1, color = "#aaa", fontSize = 16, text = true) {
+function drawLabledLine(label, x, y, x1, y1, color = "#aaa", text = true, fontSize = 16, ) {
   ctx.lineWidth="1";
   ctx.strokeStyle="gray"; 
   const w = canvas.width;
