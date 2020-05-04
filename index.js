@@ -166,6 +166,11 @@ function placeCitiesAndDrawPaths(map) {
 
   var $destination = document.getElementById("destination-selection");
   var html = "";
+  var found = cities.filter(function(city) { return city == currentDestination });
+  if (!found.length){
+    currentDestination = "b";
+    calculateBirdFlightDistances(map);
+  }
   for (var i = 1; i < cities.length; i++) {
     html += `<option value="${cities[i]}" ${currentDestination == cities[i] ? 'selected': ''}>City ${cities[i].toUpperCase()}</option>`;
   }
@@ -184,6 +189,7 @@ function changeMap() {
   ctx.stroke();
   ctx.restore();
   placeCitiesAndDrawPaths(value);
+  calculateBirdFlightDistances(value);
 };
 
 changeMap();
