@@ -1,3 +1,4 @@
+var currentDestination = null;
 var mapMatrixes = {
   "one": [
     [0, 200, 79, null, null],  // Distance from A to others
@@ -113,16 +114,16 @@ function calculateEuclidianDistance(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 }
 
-function calculateBirdFlightDistances(map, destination) {
+function calculateBirdFlightDistances(map) {
   var cities = mapCities[map];
   var $table = $("#info table")[0];
   var html = "";
 
-  document.getElementById("destination-city").innerText = destination.toUpperCase();
+  document.getElementById("destination-city").innerText = currentDestination.toUpperCase();
   mapBirdFlightDistances = {};
 
   var distance, $city;
-  var $destinationCity = $("#map-" + map).find("#city-" + destination);
+  var $destinationCity = $("#map-" + map).find("#city-" + currentDestination);
   for (var i = 0; i < cities.length; i++) {
     $city = $("#map-" + map).find("#city-" + cities[i])
     distance = calculateEuclidianDistance($city.offset().left, $city.offset().top, $destinationCity.offset().left, $destinationCity.offset().top)
@@ -163,13 +164,12 @@ function placeCitiesAndDrawPaths(map) {
     }
   }
 
-  var $destination = $("#destination")[0];
+  var $destination = document.getElementById("destination-selection");
   var html = "";
   for (var i = 1; i < cities.length; i++) {
-    html += `<option value="${cities[i]}">City ${cities[i].toUpperCase()}</option>`;
+    html += `<option value="${cities[i]}" ${currentDestination == cities[i] ? 'selected': ''}>City ${cities[i].toUpperCase()}</option>`;
   }
   $destination.innerHTML = html;
-  calculateBirdFlightDistances(map, $destination.value);
 }
 
 function changeMap() {
@@ -187,17 +187,18 @@ function changeMap() {
 };
 
 changeMap();
+currentDestination = "b";
+calculateBirdFlightDistances("one");
 
 function changeDestination() {
   var map = document.getElementById("map-selection").value;
-  var destination = document.getElementById("destination").value;
-  calculateBirdFlightDistances(map, destination);
+  currentDestination = document.getElementById("destination-selection").value;
+  calculateBirdFlightDistances(map);
 }
 
 document.getElementById("findPath").addEventListener("click", function(e) {
   e.preventDefault();
   var map = document.getElementById("map-selection").value;
-  var destination = document.getElementById("destination").value;
   var algorithm = document.getElementById("algorithm").value;
   var $result = document.getElementById("result");
   $result.innerText = "";
@@ -210,6 +211,6 @@ document.getElementById("findPath").addEventListener("click", function(e) {
     "bestfs": BestFirstSearch,
     "astar": AStar,
   }
-  distance = algorithms[algorithm]("a", destination, map);
-  $result.innerText = "Destination: City " + destination.toUpperCase() + ". Path Distance: " + distance;
+  distance = algorithms[algorithm]("a", currentDestination, map);
+  $result.innerText = "Destination: City " + currentDestination.toUpperCase() + ". Path Distance: " + distance;
 });
