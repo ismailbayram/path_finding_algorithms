@@ -1,56 +1,56 @@
 
 var mapMatrixes = {
   "one": [
-    [0, 200, 79, null, null],  // A to others
-    [200, 0, null, null, 223],   // B to others
-    [79, null, 0, 96, 189],   // C to others
-    [null, null, 96, 0, 150],   // D to others
-    [null, 223, 189, 150, 0],   // E to others
+    [0, 200, 79, null, null],  // Distance from A to others
+    [200, 0, null, null, 223],   // Distance from B to others
+    [79, null, 0, 96, 189],   // Distance from C to others
+    [null, null, 96, 0, 150],   // Distance from D to others
+    [null, 223, 189, 150, 0],   // Distance from E to others
   ],
   "two": [
-    [0, 200, 79, null, null, null, null, null, null, null],  // A to others
-    [200, 0, null, null, 223, 312, null, null, null, null],   // B to others
-    [79, null, 0, 96, 189, null, null, null, null, null],   // C to others
-    [null, null, 96, 0, 150, null, 56, null, null, null],   // D to others
-    [null, 223, 189, 150, 0, null, 77, null, 120],   // E to others
-    [null, 312, null, null, null, 0, null, 120, null], // F to others
-    [null, null, null, 56, 77, null, 0, null, null, 150], // G to others
-    [null, null, null, null, null, 120, null, 0, 56, null], // H to others
-    [null, null, null, null, 120, null, null, 56, 0, 200], // I to others
-    [null, null, null, null, null, null, 150, null, 200, 0], // J to others
+    [0, 200, 79, null, null, null, null, null, null, null],  // Distance from A to others
+    [200, 0, null, null, 223, 312, null, null, null, null],   // Distance from B to others
+    [79, null, 0, 96, 189, null, null, null, null, null],   // Distance from C to others
+    [null, null, 96, 0, 150, null, 56, null, null, null],   // Distance from D to others
+    [null, 223, 189, 150, 0, null, 77, null, 120],   // Distance from E to others
+    [null, 312, null, null, null, 0, null, 120, null], // Distance from F to others
+    [null, null, null, 56, 77, null, 0, null, null, 150], // Distance from G to others
+    [null, null, null, null, null, 120, null, 0, 56, null], // Distance from H to others
+    [null, null, null, null, 120, null, null, 56, 0, 200], // Distance from I to others
+    [null, null, null, null, null, null, 150, null, 200, 0], // Distance from J to others
   ],
   "three": [
-    [0, 200, 79, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],  // A to others
-    [200, 0, null, null, 223, 312, null, null, null, null, null, null, null, null, null, null, null, null, null, null],   // B to others
-    [79, null, 0, 96, 189, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],   // C to others
-    [null, null, 96, 0, 150, null, 56, null, null, null, null, null, null, null, 72, null, null, null, null, null],   // D to others
-    [null, 223, 189, 150, 0, null, 77, null, 120, null, 45, null, null, null, null, null, null, null, null, null],   // E to others
-    [null, 312, null, null, null, 0, null, 120, null, null, null, 37, null, null, null, null, null, null, null, null], // F to others
-    [null, null, null, 56, 77, null, 0, null, null, 150, null, null, null, null, null, null, null, 74, null, null], // G to others
-    [null, null, null, null, null, 120, null, 0, 56, null, null, null, null, 52, null, null, null, null, null, null], // H to others
-    [null, null, null, null, 120, null, null, 56, 0, 200, null, null, null, null, null, null, null, null, null, null], // I to others
-    [null, null, null, null, null, null, 150, null, 200, 0, 57, null, null, null, null, null, null, null, 52, null], // J to others
-    [null, null, null, null, 45, null, null, null, null, 57, 0, null, null, null, null, null, null, null, null, null], // K to others
-    [null, null, null, null, null, 37, null, null, null, null, null, 0, 45, null, null, null, null, null, null, null], // L to others
-    [null, null, null, null, null, null, null, null, null, null, null, 45, 0, 67, null, null, null, null, null, null], // M to others
-    [null, null, null, null, null, null, null, 52, null, null, null, null, 67, 0, null, null, null, null, null, null], // N to others
-    [null, null, null, 72, null, null, null, null, null, null, null, null, null, null, 0, 122, null, null, null, null], // O to others
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 122, 0, 75, null, null, null], // P to others
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 0, 64, null, null], // R to others
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 64, 0, null, null], // S to others
-    [null, null, null, null, null, null, null, null, null, 52, null, null, null, null, null, null, null, null, 0, 22], // T to others
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 22, 0], // U to others
+    [0, 200, 79, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],  // Distance from A to others
+    [200, 0, null, null, 223, 312, null, null, null, null, null, null, null, null, null, null, null, null, null, null],   // Distance from B to others
+    [79, null, 0, 96, 189, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],   // Distance from C to others
+    [null, null, 96, 0, 150, null, 56, null, null, null, null, null, null, null, 72, null, null, null, null, null],   // Distance from D to others
+    [null, 223, 189, 150, 0, null, 77, null, 120, null, 45, null, null, null, null, null, null, null, null, null],   // Distance from E to others
+    [null, 312, null, null, null, 0, null, 120, null, null, null, 37, null, null, null, null, null, null, null, null], // Distance from F to others
+    [null, null, null, 56, 77, null, 0, null, null, 150, null, null, null, null, null, null, null, 74, null, null], // Distance from G to others
+    [null, null, null, null, null, 120, null, 0, 56, null, null, null, null, 52, null, null, null, null, null, null], // Distance from H to others
+    [null, null, null, null, 120, null, null, 56, 0, 200, null, null, null, null, null, null, null, null, null, null], // Distance from I to others
+    [null, null, null, null, null, null, 150, null, 200, 0, 57, null, null, null, null, null, null, null, 52, null], // Distance from J to others
+    [null, null, null, null, 45, null, null, null, null, 57, 0, null, null, null, null, null, null, null, null, null], // Distance from K to others
+    [null, null, null, null, null, 37, null, null, null, null, null, 0, 45, null, null, null, null, null, null, null], // Distance from L to others
+    [null, null, null, null, null, null, null, null, null, null, null, 45, 0, 67, null, null, null, null, null, null], // Distance from M to others
+    [null, null, null, null, null, null, null, 52, null, null, null, null, 67, 0, null, null, null, null, null, null], // Distance from N to others
+    [null, null, null, 72, null, null, null, null, null, null, null, null, null, null, 0, 122, null, null, null, null], // Distance from O to others
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 122, 0, 75, null, null, null], // Distance from P to others
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 0, 64, null, null], // Distance from R to others
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 64, 0, null, null], // Distance from S to others
+    [null, null, null, null, null, null, null, null, null, 52, null, null, null, null, null, null, null, null, 0, 22], // Distance from T to others
+    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 22, 0], // Distance from U to others
   ]
 }
 
-var mapCitiesCoordinates = { // places of the cities
+var mapCitiesCoordinates = { // places of the cities, Coordinates
   "one": [[0,0], [200, 0], [80, 80], [20, 200], [195, 183]],
   "two": [[0,0], [200, 0], [80, 80], [20, 200], [195, 183], [512, 10], [140, 310], [450, 120], [440, 200], [380, 320]],
   "three": [[0,0], [200, 0], [80, 80], [20, 200], [195, 183], [512, 10], [140, 310], [450, 120], [440, 200], [380, 320],
             [295, 250], [350, 50], [325,  110], [335, 165], [15, 295], [75, 348], [116, 400], [250, 440], [510, 375], [532, 450]],
 }
 
-var mapCitiesA_Distances = {
+var mapCitiesA_Distances = { // Bird-Flight Distance from A to Others
   "one": [180, 50, 180, 150],
   "two": [180, 50, 180, 150, 250, 217, 400, 510, 620],
   "three": [180, 50, 180, 150, 250, 217, 400, 510, 620, 180, 220, 245, 287, 234, 301, 352, 401, 711, 733],
@@ -65,7 +65,7 @@ var mapCities = {
 var canvas=document.getElementById("canvas");
 var ctx=canvas.getContext("2d");
 
-function drawLabledLine(label, x, y, x1, y1, color = "#aaa", fontSize = 16) {
+function drawLabledLine(label, x, y, x1, y1, color = "#aaa", fontSize = 16, text = true) {
   ctx.lineWidth="1";
   ctx.strokeStyle="gray"; 
   const w = canvas.width;
@@ -108,8 +108,10 @@ function drawLabledLine(label, x, y, x1, y1, color = "#aaa", fontSize = 16) {
      offset = -offset;
      distAlong = - distAlong;
   }
-  ctx.fillText(label, distAlong, offset + 8);
-
+  console.log(text)
+  if (text) {
+    ctx.fillText(label, distAlong, offset + 8);
+  }
 }
 
 
