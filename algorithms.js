@@ -145,12 +145,16 @@ function BestFirstSearch(start, finish, map) {
       found = true;
       break;
     }
+
     for (var i = 0; i < matrix[currentNode].length; i++) {
       if (matrix[currentNode][i] != null && !visited[i]) {
         visited[i] = true;
         stack.push(i);
       }
     }
+
+    if(stack.isEmpty())
+      break;
 
     stack.list = stack.list.sort(function(a, b) {
       return mapBirdFlightDistances[cities[a]] - mapBirdFlightDistances[cities[b]];
@@ -168,7 +172,8 @@ function BestFirstSearch(start, finish, map) {
     drawLabledLine(matrix[path[i]][path[i + 1]], $city1.offset().left, $city1.offset().top, $city2.offset().left, $city2.offset().top, "green", false);
     distance += matrix[path[i]][path[i + 1]];
   }
-
+  if(!found)
+    return -1;
   return distance;
 }
 

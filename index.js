@@ -218,5 +218,8 @@ document.getElementById("findPath").addEventListener("click", function(e) {
     "astar": AStar,
   }
   distance = algorithms[algorithm]("a", currentDestination, map);
-  $result.innerText = "Destination: City " + currentDestination.toUpperCase() + ". Path Distance: " + distance;
+  if(distance > 0)
+    $result.innerText = "Destination: City " + currentDestination.toUpperCase() + ". Path Distance: " + distance;
+  else
+    $result.innerText = "Destination: City " + currentDestination.toUpperCase() + ". Route could NOT FOUND! Stuck in infinite loop.";
 });
