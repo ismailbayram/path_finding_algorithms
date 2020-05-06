@@ -24,16 +24,16 @@ var mapMatrixes = {
     [200, 0, null, null, 223, 312, null, null, null, null, null, null, null, null, null, null, null, null, null, null],   // Distance from B to others
     [79, null, 0, 96, 189, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],   // Distance from C to others
     [null, null, 96, 0, 150, null, 56, null, null, null, null, null, null, null, 72, null, null, null, null, null],   // Distance from D to others
-    [null, 223, 189, 150, 0, null, 77, null, 120, null, 45, null, null, null, null, null, null, null, null, null],   // Distance from E to others
+    [null, 223, 189, 150, 0, null, 77, null, 120, null, 45, null, 90, null, null, null, null, null, null, null],   // Distance from E to others
     [null, 312, null, null, null, 0, null, 120, null, null, null, 37, null, null, null, null, null, null, null, null], // Distance from F to others
     [null, null, null, 56, 77, null, 0, null, null, 150, null, null, null, null, null, null, null, 74, null, null], // Distance from G to others
     [null, null, null, null, null, 120, null, 0, 56, null, null, null, null, 52, null, null, null, null, null, null], // Distance from H to others
     [null, null, null, null, 120, null, null, 56, 0, 200, null, null, null, null, null, null, null, null, null, null], // Distance from I to others
     [null, null, null, null, null, null, 150, null, 200, 0, 57, null, null, null, null, null, null, null, 52, null], // Distance from J to others
-    [null, null, null, null, 45, null, null, null, null, 57, 0, null, null, null, null, null, null, null, null, null], // Distance from K to others
+    [null, null, null, null, 45, null, null, null, null, 57, 0, null, null, 70, null, null, null, null, null, null], // Distance from K to others
     [null, null, null, null, null, 37, null, null, null, null, null, 0, 45, null, null, null, null, null, null, null], // Distance from L to others
-    [null, null, null, null, null, null, null, null, null, null, null, 45, 0, 67, null, null, null, null, null, null], // Distance from M to others
-    [null, null, null, null, null, null, null, 52, null, null, null, null, 67, 0, null, null, null, null, null, null], // Distance from N to others
+    [null, null, null, null, 90, null, null, null, null, null, null, 45, 0, 67, null, null, null, null, null, null], // Distance from M to others
+    [null, null, null, null, null, null, null, 52, null, null, 70, null, 67, 0, null, null, null, null, null, null], // Distance from N to others
     [null, null, null, 72, null, null, null, null, null, null, null, null, null, null, 0, 122, null, null, null, null], // Distance from O to others
     [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 122, 0, 75, null, null, null], // Distance from P to others
     [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 0, 64, null, null], // Distance from R to others
